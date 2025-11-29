@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tênis com Ciência</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="icon" type="image/png" href="img/lupa.png">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+  <div class="logo">
+    <div class="logo-circle">
+      <img src="img/logo.png" alt="Logo" width="50">
+    </div>
+    <h1>Tênis com Ciência</h1>
+  </div>
+
+  <!--<nav class="menu">
+    <a href="#">Inicial</a>
+    <a href="#">Sobre</a>
+  </nav> -->
+
+<nav class="nav-lupa">
+  <button class="search">
+    <img src="img/lupa.png" alt="Buscar" width="20">
+  </button>
+</nav>
+  
+</header>
+
+  <section class="analise">
+    <div class="filtros">
+      <h2>Aplicar filtros</h2>
+      <label>Tipo de corrida:</label>
+      <select>
+        <option>----</option>
+        <option>Rodagem</option>
+        <option>Intermediários</option>
+        <option>Supertrainers</option>
+        <option>Supertênis</option>
+        <option>Treino Regenerativo</option>
+      </select>
+
+      <label>Escolha um tênis:</label>
+      <select>
+        <option></option>
+      </select>
+      <div class="comparar-container">
+        <button id="btnComparar" class="btn-comparar">Comparar outro tênis</button>
+        <select id="tenis2Select" style="display: none;">
+       <option value="">----</option>
+       </select>
+      </div>
+
+      <label>Critérios:</label>
+      <div class="checkboxes">
+        <label><input type="checkbox"> GCT</label>
+        <label><input type="checkbox"> Power</label>
+        <label><input type="checkbox"> Impacto</label>
+        <label><input type="checkbox"> Pronação</label>
+        <label><input type="checkbox"> Vel. Pronação</label>
+        <label><input type="checkbox"> Xpro</label>
+        <label><input type="checkbox"> MP-TO</label>
+        <label><input type="checkbox"> VO₂</label>
+      </div>
+
+      <label>Preço:</label>
+      <select>
+        <option>----</option>
+        <option>Até R$500,00</option>
+        <option>Até R$800,00</option>
+        <option>Até R$1000,00</option>
+        <option>Até R$1200,00</option>
+        <option>Acima de R$1200,00</option>
+      </select>
+
+      <button class="btn">Atualizar filtros</button>
+    </div>
+
+    <div class="grafico">
+      <canvas id="radarChart"></canvas>
+      <div class="nota">
+        <p>NOTA</p>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre">
+    <h2>Sobre os critérios</h2>
+    <p><strong>GCT</strong><br>O GCT (ou "Ground Contact Time" em inglês) é o tempo em que um corredor tem o pé em contato com o solo a cada passada, medido em milissegundos.</p>
+    <p><strong>Power</strong><br>Potência de corrida (em Watts) mede o esforço que você coloca na corrida, indicando a força e velocidade aplicadas a cada momento.</p>
+    <p><strong>Impacto</strong><br>Refere-se à força que o corpo do corredor sofre a cada passada, sendo um fator crucial na prevenção de lesões e na melhoria do desempenho.</p>
+    <p><strong>Pronação</strong><br>A pronação é o movimento natural em que o pé roda para dentro ao tocar o solo, distribuindo o impacto e o peso corporal.</p>
+    <p><strong>Velocidade de pronação</strong><br>A velocidade de pronação refere-se à rapidez com que o pé gira para dentro durante a marcha ou corrida, um movimento natural que amortecer o impacto com o solo.</p>
+    <p><strong>Xpro</strong><br>O Xpro é um indicador que combina a amplitude da pronação do pé com a velocidade desse movimento durante a corrida.</p>
+    <p><strong>VO₂</strong><br>O VO₂ representa a quantidade máxima de oxigênio que o corpo consegue utilizar durante esforços intensos.</p>
+    <p><strong>MP-TO</strong><br>O MP-TO indica o ponto de contato do médio pé com o solo durante a corrida.</p>
+  </section>
+
+  <footer class="rodape">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo" width="60">
+      <div>
+        <h2>Tênis com Ciência</h2>
+        <p>Apaixonados por corrida. Obcecados por tênis. Guiados pela ciência.</p>
+      </div>
+    </div>
+    <div class="links">
+      <a href="#">Home</a>
+      <a href="#">Quem Somos</a>
+      <a href="#">Contato</a>
+
+    </div>
+   <div class="social">
+  <a href="https://www.instagram.com/teniscomciencia/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@teniscomciencia" target="_blank" class="youtube">
+    <i class="fab fa-youtube"></i>
+  </a>
+  <a href="https://www.tiktok.com/@tenis_com_ciencia" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+</html>
