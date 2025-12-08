@@ -442,3 +442,51 @@ body {
   font-size: 0,7rem; 
   font-weight: 100px; 
 }
+
+.ranking {
+  margin-top: 20px;
+  background: #c0bec4;
+  padding: 25px 25px;
+  border-radius: 12px;
+  width: 390px;               
+}
+
+.ranking h3 {
+  font-family: 'Russo One', sans-serif;
+  color: #1a0c3d;
+  font-size: 18px;
+  margin: 0 0 15px 0;
+}
+
+#rankingTop5 ol {
+  list-style: none;         
+  padding: 0;
+  margin: 0;
+}
+
+#rankingTop5 li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  margin-bottom: 8px;
+  white-space: nowrap;        
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+}
+
+.grafico-container {
+  width: 100%;
+  max-width: 700px; 
+  height: 500px;    
+  margin: 0 auto;
+  position: relative;
+}
+
+#grafico-container canvas,
+#radarChart {
+  width: 100%;
+  height: auto;    
+  max-width: 480px; 
+  max-height: 480px;
+  margin: 0 auto;
+  display: block;
+}
