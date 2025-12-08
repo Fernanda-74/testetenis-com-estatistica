@@ -20,6 +20,20 @@ const radarColumns = [
   "MP - TO NOTA"
 ];
 
+const btnAtualizar = document.querySelector(".btn");
+const rankingBox = document.querySelector("#rankingTop5 ol");
+
+const criterioMap = {
+  "GCT": "GCT NOTA",
+  "Power": "Power NOTA",
+  "Impacto": "Impacto NOTA",
+  "Pronação": "Pronacao NOTA",
+  "Vel. Pronação": "Vel. Pronacao NOTA",
+  "Xpro": "Xpro NOTA",
+  "VO₂": "VO2 NOTA",
+  "MP-TO": "MP - TO NOTA"
+};
+
 function safeNum(value) {
   if (!value) return 0;
   return Number(String(value).trim().replace(",", ".")) || 0;
@@ -87,6 +101,14 @@ function updateChart() {
     notaDiv.innerHTML = "";
     return;
   }
+
+  // === CORREÇÃO IMPORTANTE ===
+  if (chartInstance && chartInstance._modo === "ranking") {
+    chartInstance.destroy();
+    chartInstance = null;
+  }
+  if (notaDiv) notaDiv.style.display = "block";
+  // ===============================
 
   const row1 = rawRows[idx1];
   const label1 = row1["Tenis"] || row1["TENIS"] || row1["Tênis"];
@@ -170,6 +192,8 @@ function updateChart() {
         }
       }
     });
+
+    chartInstance._modo = "comparacao"; // <<< CORREÇÃO
   }
 }
 
@@ -190,6 +214,114 @@ function atualizarInfoBox(tenis1, tenis2) {
     `;
     notaDiv.appendChild(bloco);
   });
+}
+
+function aplicarFiltros() {
+  console.log("aplicarFiltros acionado");
+
+  if (!rawRows || rawRows.length === 0) {
+    alert("Dados ainda não carregados.");
+    return;
+  }
+
+  const selects = document.querySelectorAll(".filtros select");
+  const precoSelect = selects[selects.length - 1];
+  const precoSelecionado = precoSelect ? precoSelect.value : "";
+
+  let limitePreco = Infinity;
+  if (precoSelecionado && precoSelecionado !== "----") {
+    const match = precoSelecionado.match(/[\d.,]+/);
+    if (match) {
+      limitePreco = Number(match[0].replace(/\./g, "").replace(",", "."));
+      if (!Number.isFinite(limitePreco)) limitePreco = Infinity;
+    }
+  }
+
+  const criterios = [...document.querySelectorAll(".checkboxes input:checked")]
+    .map(c => {
+      const label = c.closest("label") ? c.closest("label").textContent.trim() : c.parentNode.textContent.trim();
+      return criterioMap[label] || criterioMap[label.replace(/\s+/g, " ")] || null;
+    })
+    .filter(Boolean);
+
+  if (criterios.length < 3) {
+    alert("Selecione ao menos 3 critérios para gerar o gráfico radar.");
+    return;
+  }
+
+  function precoNum(raw) {
+    if (!raw) return Infinity;
+    let v = String(raw).trim();
+    v = v.replace(/R\$\s?/ig, "").replace(/\./g, "").replace(",", ".");
+    return Number(v) || Infinity;
+  }
+
+  const filtrados = rawRows
+    .map(row => {
+      const preco = precoNum(row["Preco"] || row["PRECO"] || row["Preço"] || "");
+      return { row, preco };
+    })
+    .filter(item => item.preco <= limitePreco)
+    .map(item => {
+      const notas = criterios.map(c => safeNum(item.row[c]));
+      const media = notas.reduce((a, b) => a + b, 0) / notas.length;
+      return {
+        nome: item.row["Tenis"] || item.row["TENIS"] || item.row["Tênis"],
+        media,
+        notas,
+        preco: item.preco
+      };
+    })
+    .filter(t => t.media > 0)
+    .sort((a, b) => b.media - a.media)
+    .slice(0, 5);
+
+  rankingBox.innerHTML = "";
+  filtrados.forEach((t, i) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${i + 1}º <strong>${t.nome}</strong> – Nota: ${t.media.toFixed(2)} – R$ ${t.preco}`;
+    rankingBox.appendChild(li);
+  });
+
+  const cores = [
+    "rgba(255,99,132,0.35)",
+    "rgba(54,162,235,0.35)",
+    "rgba(75,192,192,0.35)",
+    "rgba(255,206,86,0.35)",
+    "rgba(153,102,255,0.35)"
+  ];
+
+  const datasets = filtrados.map((t, i) => ({
+    label: t.nome,
+    data: t.notas,
+    fill: true,
+    backgroundColor: cores[i],
+    borderColor: cores[i].replace("0.35", "1"),
+    borderWidth: 2,
+    pointRadius: 3
+  }));
+
+  if (chartInstance) chartInstance.destroy();
+
+  chartInstance = new Chart(document.getElementById("radarChart"), {
+    type: "radar",
+    data: {
+      labels: criterios.map(c => c.replace(" NOTA", "")),
+      datasets
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+
+  chartInstance._modo = "ranking"; // <<< CORREÇÃO
+
+  if (notaDiv) notaDiv.style.display = "none";
+}
+
+if (btnAtualizar) {
+  btnAtualizar.addEventListener("click", aplicarFiltros);
 }
 
 loadData();
