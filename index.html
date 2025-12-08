@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="img/logo.png">
-  <link rel="icon" type="image/png" href="img/lupa.png">
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
@@ -27,11 +26,11 @@
     <a href="#">Sobre</a>
   </nav> -->
 
-<nav class="nav-lupa">
+<!--<nav class="nav-lupa">
   <button class="search">
     <img src="img/lupa.png" alt="Buscar" width="20">
   </button>
-</nav>
+</nav>-->
   
 </header>
 
@@ -85,7 +84,15 @@
     </div>
 
     <div class="grafico">
-      <canvas id="radarChart"></canvas>
+      <div class="grafico-container">
+    <canvas id="radarChart"></canvas>
+   </div>
+
+    <div class="ranking" id="rankingTop5" aria-live="polite">
+      <h3>Top 5 Tênis</h3>
+      <ol></ol>
+    </div>
+
       <div class="nota">
         <p>NOTA</p>
         <span></span>
