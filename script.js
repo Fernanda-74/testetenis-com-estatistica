@@ -3,6 +3,13 @@ const csvUrl = "https://docs.google.com/spreadsheets/d/1r0c6ViGzlMPuqp6Z0Jm3mk7H
 let rawRows = [];
 let chartInstance = null;
 
+let detailDiv;
+
+document.addEventListener("DOMContentLoaded", () => {
+  initDetailDiv();
+});
+
+
 const tenisSelect = document.querySelector(".tenis-select") || document.querySelector(".filtros select:nth-of-type(2)");
 const tenis2Select = document.getElementById("tenis2Select");
 const btnComparar = document.getElementById("btnComparar");
@@ -216,6 +223,74 @@ function atualizarInfoBox(tenis1, tenis2) {
   });
 }
 
+function initDetailDiv() {
+  const overlay = document.createElement("div");
+  overlay.id = "tenisDetailOverlay";
+  overlay.className = "modal-overlay";
+  overlay.style.display = "none";
+  overlay.onclick = closeDetail;
+
+  detailDiv = document.createElement("div");
+  detailDiv.id = "tenisDetail";
+  detailDiv.className = "modal-card";
+  detailDiv.style.display = "none";
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(detailDiv);
+}
+
+function showDetail(t, criteriosSelecionados) {
+  closeDetail();
+  
+  const row = rawRows.find(r => (r["Tenis"] || r["TENIS"] || r["Tênis"]) === t.nome);
+  if (!row) {
+    console.warn("Tênis não encontrado nos dados originais.");
+    return;
+  }
+  const nome = t.nome;
+  const notaMedia = t.media.toFixed(2);
+  const preco = t.preco === Infinity ? "-" : t.preco;
+  const precoIdeal = row["Preco IDEAL"] || row["PRECO IDEAL"] || "-";
+  const custoBeneficio = row["C x B"] || row["C X B"] || "-";
+  const linkCompra = row["Link Compra"] || row["LINK COMPRA"] || "-";
+  
+  detailDiv.innerHTML = `
+    <button class="modal-close" onclick="closeDetail()">x</button>
+
+  <h2>${nome}</h2>
+
+  <div class="modal-info">
+    <span><strong>Nota Média:</strong> ${notaMedia}</span>
+    <span><strong>Preço:</strong> R$ ${preco}</span>
+    <span><strong>Preço Ideal:</strong> R$ ${precoIdeal}</span>
+    <span><strong>Custo-Benefício:</strong> ${custoBeneficio}</span>
+  </div>
+
+  <div class="modal-criteria">
+    <h3>Notas por Critério</h3>
+    <ul>
+      ${criteriosSelecionados.map(c => {
+        const nota = safeNum(row[c]).toFixed(1);
+        return `<li>${c.replace(" NOTA", "")}: ${nota}</li>`;
+      }).join("")}
+    </ul>
+  </div>
+
+  <button class="modal-button"
+    onclick="window.open('${linkCompra}', '_blank')">
+    Comprar Agora
+  </button>
+`;
+  
+  document.getElementById("tenisDetailOverlay").style.display = "block";
+  detailDiv.style.display = "block";
+}
+
+function closeDetail() {
+  detailDiv.style.display = "none";
+  document.getElementById("tenisDetailOverlay").style.display = "none";
+}
+
 function aplicarFiltros() {
   console.log("aplicarFiltros acionado");
 
@@ -280,6 +355,10 @@ function aplicarFiltros() {
   filtrados.forEach((t, i) => {
     const li = document.createElement("li");
     li.innerHTML = `${i + 1}º <strong>${t.nome}</strong> – Nota: ${t.media.toFixed(2)} – R$ ${t.preco}`;
+    
+li.style.cursor = "pointer";
+li.addEventListener("click", () => showDetail(t, criterios));
+
     rankingBox.appendChild(li);
   });
 
@@ -325,3 +404,9 @@ if (btnAtualizar) {
 }
 
 loadData();
+
+initDetailDiv();
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeDetail();
+});

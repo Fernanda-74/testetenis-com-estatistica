@@ -490,3 +490,130 @@ body {
   margin: 0 auto;
   display: block;
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+
+  z-index: 1000;
+  display: none;
+}
+
+.modal-card {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #ffffff;
+  width: 420px;
+  max-width: 90%;
+  padding: 28px;
+
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
+  z-index: 1001;
+  display: none;
+}
+
+.modal-card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+
+.modal-info span {
+  color: #374151;
+}
+
+.modal-info strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.modal-criteria {
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+
+.modal-criteria h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.modal-criteria ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-criteria li {
+  font-size: 0.9rem;
+  padding: 6px 0;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.modal-criteria li:last-child {
+  border-bottom: none;
+}
+
+.modal-button {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 8px 18px rgba(236, 72, 153, 0.4);
+}
+
+.modal-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(236, 72, 153, 0.55);
+}
+
+.modal-button:active {
+  transform: scale(0.98);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+
+  width: 28px;
+  height: 28px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: #9ca3af;
+
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111827;
+}
