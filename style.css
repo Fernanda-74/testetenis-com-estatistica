@@ -1,0 +1,1275 @@
+/* ===== Paleta oficial =====
+   Roxo/marinho escuro : #211D38
+   Branco               : #FFFFFF
+   Turquesa             : #2EDDC2
+   Laranja/coral        : #FF533F
+   Gradiente            : linear-gradient(90deg, #2EDDC2, #FF533F)
+*/
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'League Spartan', Arial, sans-serif;
+  font-weight: 400;
+  background: #f0efef;
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  background: #211D38;
+  color: #FFFFFF;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #2EDDC2;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.header h1 .destaque {
+  color: #2EDDC2;
+}
+
+.header nav a {
+  text-decoration: none;      
+  color: #FFFFFF;               
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  padding: 5px 10px;      
+  border-radius: 5px;    
+  transition: all 0.3s;        
+}
+
+.header nav a:hover {
+  color: #211D38;                
+  background-color: #2EDDC2;   
+}
+
+.menu {
+  display: flex;
+  gap: 100px; 
+  margin-left: 20px; 
+}
+
+/* Sobre */
+.sobre {
+  padding: 40px;
+  background: #e6e6e6;
+  font-family: 'League Spartan', sans-serif;
+  margin-right: 20px;
+}
+
+.sobre h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #211D38;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;  
+}
+
+.sobre p {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+}
+
+.sobre-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-top: 10px;
+}
+
+.sobre-imagem {
+  flex-shrink: 0;
+  width: 300px;
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(33, 29, 56, 0.18);
+}
+
+.sobre-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 62%;
+  display: block;
+}
+
+.sobre-lista {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.criterio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.criterio-icone {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(46, 221, 194, 0.15);
+  color: #211D38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.criterio-item strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #211D38;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.sobre p strong {
+  font-weight: 600;
+  color: #211D38;
+}
+
+.analise {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 40px;
+}
+
+.filtros {
+  background: #FFFFFF;
+  padding: 26px 24px 28px 24px;
+  border-radius: 16px;
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(33, 29, 56, 0.10);
+  border: 1px solid rgba(33, 29, 56, 0.06);
+}
+
+/* Cabeçalho do painel */
+.filtros-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.filtros-header-box {
+  background: rgba(46, 221, 194, 0.12);
+  border: 1.5px solid rgba(46, 221, 194, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+.filtros-header-box:hover {
+  background: rgba(46, 221, 194, 0.22);
+  border-color: #2EDDC2;
+}
+
+.filtros-header-texto {
+  text-align: left;
+  flex: 1;
+}
+
+.filtros-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtros-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #211D38;
+  color: #2EDDC2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.filtros h2 {
+  font-size: 17px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  color: #211D38;
+  letter-spacing: 0.3px;
+}
+
+.filtros-sub {
+  margin-top: 4px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #6c6a78;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+}
+
+/* Rótulos dos filtros */
+.filtro-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  color: #211D38;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.info-icon {
+  font-size: 12px;
+  color: #9a98a3;
+  cursor: help;
+}
+
+/* Selects com ícone embutido */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-icon {
+  position: absolute;
+  left: 12px;
+  color: #211D38;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.select-wrapper select {
+  padding-left: 36px;
+}
+
+/* Comparar tênis */
+.comparar-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-comparar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #FF533F;
+  border: 1.5px dashed #FF533F;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.btn-comparar:hover {
+  background-color: #FF533F;
+  color: #FFFFFF;
+}
+
+/* Cabeçalho dos critérios + botão selecionar todos */
+.criterios-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  margin-top: 18px;
+}
+
+.btn-selecionar-todos {
+  border: none;
+  background: none;
+  color: #2EDDC2;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.btn-selecionar-todos:hover {
+  color: #FF533F;
+}
+
+.filtros label {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+}
+
+.checkboxes label:hover {
+  background-color: rgba(255, 83, 63, 0.08);
+  color: #211D38;
+}
+
+.crit-icon {
+  color: #211D38;
+  font-size: 13px;
+  width: 16px;
+  text-align: center;
+}
+
+.filtros-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  margin-top: 0;
+  width: 100%;
+  padding: 12px;
+  background: #FF533F;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: #211D38;
+  color: #2EDDC2;
+}
+
+.btn-limpar {
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  border: 1.5px solid #211D38;
+  color: #211D38;
+  border-radius: 8px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.btn-limpar:hover {
+  background: #211D38;
+  color: #FFFFFF;
+}
+
+/* Divisor "ou" */
+.divisor-ou {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #9a98a3;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 18px 0;
+}
+
+.divisor-ou::before,
+.divisor-ou::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(33, 29, 56, 0.12);
+}
+
+.divisor-ou span {
+  padding: 0 12px;
+  text-transform: uppercase;
+}
+
+/* Card "Escolher um tênis" */
+.card-escolher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(46, 221, 194, 0.12);
+  border: 1.5px solid rgba(46, 221, 194, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.card-escolher:hover {
+  background: rgba(46, 221, 194, 0.22);
+  border-color: #2EDDC2;
+}
+
+.card-escolher-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #211D38;
+  color: #2EDDC2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-escolher-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.card-escolher-texto strong {
+  font-size: 13px;
+  color: #211D38;
+  letter-spacing: 0.3px;
+}
+
+.card-escolher-texto span {
+  font-size: 12px;
+  color: #6c6a78;
+  line-height: 1.3;
+}
+
+.card-escolher-seta {
+  color: #211D38;
+  font-size: 13px;
+}
+
+.grafico {
+  flex: 1;
+  position: relative;
+}
+
+.nota {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  background: #FFFFFF;
+  padding: 20px 24px;
+  border-radius: 14px;
+  text-align: left;
+  min-width: 260px;
+  max-width: 320px;
+  max-height: 380px;
+  overflow-y: auto;
+  border: 2px solid #211D38;
+  box-shadow: 0 6px 18px rgba(33, 29, 56, 0.25);
+}
+
+.nota p {
+  color: #211D38;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.nota span {
+  font-size: 24px;
+  font-weight: 800;
+  color: #211D38;
+  font-family: 'League Spartan', sans-serif;
+}
+
+/* Rodapé */
+.rodape {
+  background: #211D38;
+  color: #FFFFFF;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-top: 3px solid #2EDDC2; 
+  font-family: 'League Spartan', sans-serif;
+}
+.rodape::after {
+  content: "";
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  height: 10px; 
+  background: linear-gradient(90deg, #2EDDC2, #FF533F); /* degradê */
+}
+
+.rodape .logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rodape .logo p {
+  font-family: 'League Spartan', sans-serif; 
+  font-weight: 400; 
+  color: #FFFFFF;   
+  margin: 0;        
+  line-height: 1.4; 
+}
+
+.rodape h2 {
+  font-size: 20px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800; 
+}
+
+.rodape h2 .destaque,
+.rodape h2 .destaque1 {
+  color: #2EDDC2;
+}
+
+.rodape .links {
+  display: flex;
+  gap: 30px;
+  font-family: 'League Spartan', sans-serif; 
+  font-weight: 400; 
+  color: #FFFFFF;   
+  text-decoration: none; 
+}
+
+.rodape .links a {
+  color: #FFFFFF;   
+  font-weight: 400; 
+  text-decoration: none; 
+  transition: color 0.3s;
+}
+
+.rodape .links a:hover {
+  color: #2EDDC2; 
+}
+
+
+.rodape .social {
+  display: flex;
+  gap: 20px;
+  font-size: 22px;
+}
+
+.social a {
+  font-size: 30px;
+  margin: 0 10px;
+  color: #FFFFFF; 
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Instagram: gradiente aproximado do app */
+.social a.instagram:hover i {
+  color: #feda75; 
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
+
+/* YouTube: vermelho */
+.social a.youtube:hover i {
+  color: #FF533F;
+}
+
+/* TikTok: turquesa e laranja (paleta da marca) */
+.social a.tiktok:hover i {
+  color: #2EDDC2; 
+  text-shadow: 2px 0 #FF533F, -2px 0 #FF533F; 
+}
+
+.filtros select {
+  width: 100%;
+  padding: 10px 12px;          
+  border-radius: 8px;          
+  border: 2px solid #211D38;  
+  background-color: #FFFFFF;  
+  color: #211D38;             
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  appearance: none;             
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filtros .select-wrapper select {
+  padding-left: 36px;
+}
+
+/* Hover e foco */
+.filtros select:hover,
+.filtros select:focus {
+  border-color: #FF533F;       
+  box-shadow: 0 0 5px rgba(255,83,63,0.5);
+  outline: none;
+}
+
+
+/* ============ RESPONSIVIDADE ============ */
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+  .analise {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filtros {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .sobre-conteudo {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .sobre-imagem {
+    width: 220px;
+    position: static;
+  }
+
+  .grafico {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nota {
+    position: static;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+}
+
+/* Tablets pequenos / celulares grandes (até 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .header h1 {
+    font-size: 17px;
+  }
+
+  .analise {
+    padding: 24px 16px;
+  }
+
+  .sobre {
+    padding: 30px 20px;
+    margin-right: 0;
+  }
+
+  .modal-ficha {
+    max-width: 420px;
+  }
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 16px;
+  }
+
+  .analise {
+    padding: 16px;
+  }
+
+  .filtros {
+    width: 100%;
+    padding: 18px 16px;
+  }
+
+  .filtros-header-box {
+    padding: 12px;
+  }
+
+  .grafico {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .nota {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 16px 18px;
+  }
+
+  .sobre {
+    padding: 24px 16px;
+  }
+
+  .sobre h2 {
+    font-size: 19px;
+  }
+
+  .sobre-imagem {
+    width: 170px;
+  }
+
+  .criterio-item {
+    gap: 12px;
+  }
+
+  .criterio-icone {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .rodape {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .rodape .links {
+    justify-content: center;
+  }
+
+  .rodape .social {
+    justify-content: center;
+  }
+
+  .modal-ficha {
+    max-width: 100%;
+  }
+
+  .modal-corpo {
+    padding: 20px 18px 24px;
+  }
+
+  .modal-precos {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .modal-cabecalho h3 {
+    font-size: 15px;
+  }
+}
+
+/* Celulares pequenos (até 400px) */
+@media (max-width: 400px) {
+  .header h1 {
+    font-size: 14px;
+  }
+
+  .logo-circle img {
+    width: 40px;
+  }
+
+  .filtros-sub {
+    font-size: 11.5px;
+  }
+
+  .checkboxes label {
+    font-size: 13px;
+  }
+
+  .btn,
+  .btn-limpar,
+  .btn-comparar {
+    font-size: 12.5px;
+  }
+
+  .card-escolher-texto strong {
+    font-size: 12px;
+  }
+
+  .card-escolher-texto span {
+    font-size: 11px;
+  }
+
+  .sobre-imagem {
+    width: 140px;
+  }
+
+  .criterio-item strong {
+    font-size: 14px;
+  }
+
+  .criterio-item p {
+    font-size: 13px;
+  }
+
+  .modal-precos {
+    grid-template-columns: 1fr;
+  }
+
+  .classificacao-info,
+  .classificacao-nome {
+    font-size: 12px;
+  }
+}
+
+#notaBox {
+  background-color: rgba(200, 200, 200, 0.7);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #211D38;
+  text-align: left;
+  width: 230px;
+  box-shadow: 0px 2px 6px #211D38;
+  margin-top: 20px;
+}
+
+/* layout responsivo */
+@media (min-width: 900px) {
+  .containerRadar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  #notaBox {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  .containerRadar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  #notaBox {
+    width: 80%;
+  }
+}
+
+.tenisInfo {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(33, 29, 56, 0.2);
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #211D38;
+}
+
+.tenisInfo:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.tenisNome {
+  font-family: 'League Spartan', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem;
+  color: #211D38;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* Lista de resultados no modo "classificação" (vários tênis de uma vez) */
+.classificacao-titulo {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #211D38;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+.classificacao-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.classificacao-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(33, 29, 56, 0.1);
+}
+
+.classificacao-item:last-child {
+  border-bottom: none;
+}
+
+.classificacao-dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  margin-top: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(33, 29, 56, 0.25);
+}
+
+.classificacao-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.classificacao-nome {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #211D38;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.classificacao-info {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 11.5px;
+  color: #6c6a78;
+}
+
+.sem-resultado {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #211D38;
+}
+
+/* Nomes clicáveis (abrem a ficha do tênis) */
+.nome-clicavel {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.nome-clicavel:hover {
+  color: #FF533F;
+  text-decoration: underline;
+}
+
+/* ===== Ficha do tênis (modal) ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(33, 29, 56, 0.55);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.aberto {
+  display: flex;
+}
+
+.modal-ficha {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(33, 29, 56, 0.35);
+}
+
+.modal-corpo {
+  padding: 24px 28px 28px;
+}
+
+.modal-imagem {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #ebebef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.modal-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-imagem-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #b3b1ba;
+}
+
+.modal-imagem-placeholder i {
+  font-size: 32px;
+}
+
+.modal-imagem-placeholder span {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #211D38;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(33, 29, 56, 0.15);
+}
+
+.modal-fechar:hover {
+  background: #211D38;
+  color: #FFFFFF;
+}
+
+.modal-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.modal-cabecalho-icone {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(46, 221, 194, 0.15);
+  color: #211D38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.modal-cabecalho h3 {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: #211D38;
+  margin-bottom: 4px;
+}
+
+.modal-nota-badge {
+  display: inline-block;
+  background: #FF533F;
+  color: #FFFFFF;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.modal-precos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.modal-precos-item {
+  background: #f6f6f6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.modal-precos-item span {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9a98a3;
+}
+
+.modal-precos-item strong {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #211D38;
+}
+
+.modal-subtitulo {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #211D38;
+  margin-bottom: 12px;
+}
+
+.modal-criterios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ficha-criterio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(33, 29, 56, 0.08);
+}
+
+.ficha-criterio:last-child {
+  border-bottom: none;
+}
+
+.ficha-criterio-icone {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(46, 221, 194, 0.15);
+  color: #211D38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.ficha-criterio-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ficha-criterio-label {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #211D38;
+}
+
+.ficha-criterio-valor {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 11.5px;
+  color: #6c6a78;
+}
