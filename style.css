@@ -1273,3 +1273,95 @@ body {
   font-size: 11.5px;
   color: #6c6a78;
 }
+
+/* ===== Aviso "em desenvolvimento" (canto da tela) ===== */
+.aviso-dev {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 900;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 320px;
+  background: #211D38;
+  border: 1.5px solid rgba(46, 221, 194, 0.5);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 30px rgba(33, 29, 56, 0.35);
+  animation: aviso-dev-entrar 0.4s ease;
+}
+
+.aviso-dev.escondido {
+  display: none;
+}
+
+@keyframes aviso-dev-entrar {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.aviso-dev-icone {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(46, 221, 194, 0.15);
+  color: #2EDDC2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.aviso-dev-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.aviso-dev-texto strong {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.2px;
+}
+
+.aviso-dev-texto span {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.aviso-dev-fechar {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.aviso-dev-fechar:hover {
+  background: #FF533F;
+}
+
+@media (max-width: 600px) {
+  .aviso-dev {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: none;
+  }
+}
