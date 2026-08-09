@@ -68,7 +68,7 @@ const CRITERIOS_FICHA = [
   { valor: "IMPACTO", nota: "Impacto NOTA", label: "Amortecimento", icone: "fa-hand-fist", unidade: "" },
   { valor: "PRONAÇÃO", nota: "Pronacao NOTA", label: "Pronação", icone: "fa-shoe-prints", unidade: "" },
   { valor: "VEL. PRON.", nota: "Vel. Pronacao NOTA", label: "Vel. Pronação", icone: "fa-gauge-high", unidade: "" },
-  { valor: "Xpro", nota: "Xpro NOTA", label: "Xpro", icone: "fa-arrows-left-right", unidade: "" },
+  { valor: "Xpro", nota: "Xpro NOTA", label: "Estabilidade", icone: "fa-arrows-left-right", unidade: "" },
   { valor: "VO2", nota: "VO2 NOTA", label: "VO₂", icone: "fa-lungs", unidade: "" },
   { valor: "MP - TO", nota: "MP - TO NOTA", label: "MP-TO", icone: "fa-shoe-prints", unidade: "" }
 ];
