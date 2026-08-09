@@ -392,11 +392,7 @@ function renderClassificacao(indices) {
       },
       plugins: {
         legend: {
-          position: "top",
-          labels: {
-            font: { family: "'League Spartan', sans-serif", weight: "800", size: 12 },
-            boxWidth: 12
-          }
+          display: false
         }
       }
     }
