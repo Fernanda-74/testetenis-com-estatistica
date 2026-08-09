@@ -512,20 +512,27 @@ body {
 
 .grafico {
   flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.grafico-canvas-wrap {
+  flex: 1;
+  min-width: 0;
   position: relative;
 }
 
 .nota {
-  position: absolute;
-  bottom: 10px;
-  right: 30px;
+  position: static;
+  flex-shrink: 0;
   background: #FFFFFF;
   padding: 20px 24px;
   border-radius: 14px;
   text-align: left;
-  min-width: 260px;
-  max-width: 320px;
-  max-height: 380px;
+  width: 300px;
+  max-height: 520px;
   overflow-y: auto;
   border: 2px solid #211D38;
   box-shadow: 0 6px 18px rgba(33, 29, 56, 0.25);
@@ -706,12 +713,17 @@ body {
 
   .grafico {
     width: 100%;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
+  .grafico-canvas-wrap {
+    width: 100%;
+  }
+
   .nota {
-    position: static;
-    margin-top: 20px;
+    margin-top: 0;
     width: 90%;
     max-width: 500px;
     margin-left: auto;
