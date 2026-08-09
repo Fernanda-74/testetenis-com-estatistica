@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tênis com Estatística</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+  <div class="logo">
+    <div class="logo-circle">
+      <img src="logo.png" alt="Logo" width="50">
+    </div>
+    <h1>TÊNIS COM <span class="destaque">ESTATÍSTICA</span></h1>
+  </div>
+
+  <!--<nav class="menu">
+    <a href="#">Inicial</a>
+    <a href="#">Sobre</a>
+  </nav> -->
+
+</header>
+
+  <!-- Filtros + Gráfico -->
+  <section class="analise">
+
+    <!-- ===== Painel lateral de filtros ===== -->
+    <aside class="filtros">
+
+      <button type="button" id="btnToggleFiltros" class="filtros-header filtros-header-box">
+        <div class="filtros-icon"><i class="fas fa-filter"></i></div>
+        <div class="filtros-header-texto">
+          <h2>CLASSIFICAR TÊNIS</h2>
+          <p class="filtros-sub">Use os filtros abaixo para encontrar os tênis que mais combinam com você.</p>
+        </div>
+      </button>
+
+      <div id="filtrosBody" class="filtros-body">
+      <label class="filtro-label" style="margin-top:0;">TIPO DE CORRIDA <i class="fas fa-circle-info info-icon" title="Selecione a categoria de treino"></i></label>
+      <div class="select-wrapper">
+        <i class="fas fa-person-running select-icon"></i>
+        <select id="tipoCorridaSelect">
+          <option>----</option>
+          <option>Rodagem</option>
+          <option>Intermediários</option>
+          <option>Supertrainers</option>
+          <option>Supertênis</option>
+          <option>Treino Regenerativo</option>
+        </select>
+      </div>
+
+      <div class="criterios-header">
+        <label class="filtro-label" style="margin-top:18px;">CRITÉRIOS <i class="fas fa-circle-info info-icon" title="Escolha o que deseja comparar"></i></label>
+        <button type="button" id="btnSelecionarTodos" class="btn-selecionar-todos">Selecionar todos</button>
+      </div>
+      <div class="checkboxes">
+        <label><input type="checkbox" checked data-col="GCT NOTA" data-label="GCT"> <i class="fas fa-stopwatch crit-icon"></i> GCT</label>
+        <label><input type="checkbox" checked data-col="Power NOTA" data-label="Power"> <i class="fas fa-bolt crit-icon"></i> Power</label>
+        <label><input type="checkbox" checked data-col="Impacto NOTA" data-label="Impacto"> <i class="fas fa-hand-fist crit-icon"></i> Impacto</label>
+        <label><input type="checkbox" data-col="Pronacao NOTA" data-label="Pronação"> <i class="fas fa-shoe-prints crit-icon"></i> Pronação</label>
+        <label><input type="checkbox" data-col="Vel. Pronacao NOTA" data-label="Vel. Pronação"> <i class="fas fa-gauge-high crit-icon"></i> Vel. Pronação</label>
+        <label><input type="checkbox" data-col="Xpro NOTA" data-label="Xpro"> <i class="fas fa-arrows-left-right crit-icon"></i> Xpro</label>
+        <label><input type="checkbox" data-col="MP - TO NOTA" data-label="MP-TO"> <i class="fas fa-shoe-prints crit-icon"></i> MP-TO</label>
+        <label><input type="checkbox" checked data-col="VO2 NOTA" data-label="VO₂"> <i class="fas fa-lungs crit-icon"></i> VO₂</label>
+      </div>
+
+      <label class="filtro-label">PREÇO <i class="fas fa-circle-info info-icon" title="Filtre por faixa de preço"></i></label>
+      <div class="select-wrapper">
+        <i class="fas fa-tag select-icon"></i>
+        <select id="precoSelect">
+          <option>----</option>
+          <option>Até R$500,00</option>
+          <option>Até R$800,00</option>
+          <option>Até R$1000,00</option>
+          <option>Até R$1200,00</option>
+          <option>Acima de R$1200,00</option>
+        </select>
+      </div>
+
+      <div class="divisor-ou"><span>ou</span></div>
+
+      <button type="button" class="card-escolher" id="btnEscolherTenis">
+        <div class="card-escolher-icon"><i class="fas fa-shoe-prints"></i></div>
+        <div class="card-escolher-texto">
+          <strong>ESCOLHER UM TÊNIS</strong>
+          <span>Pesquise um modelo específico e veja todas as estatísticas.</span>
+        </div>
+        <i class="fas fa-arrow-down card-escolher-seta"></i>
+      </button>
+
+      <label class="filtro-label">ESCOLHA UM TÊNIS</label>
+      <div class="select-wrapper">
+        <i class="fas fa-shoe-prints select-icon"></i>
+        <select class="tenis-select">
+          <option></option>
+        </select>
+      </div>
+
+      <div class="comparar-container">
+        <button id="btnComparar" class="btn-comparar"><i class="fas fa-code-compare"></i> Comparar outro tênis</button>
+        <div class="select-wrapper" id="tenis2Wrapper" style="display: none;">
+          <i class="fas fa-shoe-prints select-icon"></i>
+          <select id="tenis2Select">
+            <option value="">----</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filtros-acoes">
+        <button type="button" id="btnAtualizarFiltros" class="btn"><i class="fas fa-filter"></i> ATUALIZAR FILTROS</button>
+        <button type="button" id="btnLimparFiltros" class="btn-limpar"><i class="fas fa-eraser"></i> LIMPAR FILTROS</button>
+      </div>
+
+      </div>
+      <!-- fim filtrosBody -->
+
+    </aside>
+    <!-- ===== fim do painel lateral ===== -->
+
+    <div class="grafico">
+      <canvas id="radarChart"></canvas>
+      <div class="nota">
+        <p>NOTA</p>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+    <!-- Sobre os critérios -->
+  <section class="sobre">
+    <h2>SOBRE OS CRITÉRIOS</h2>
+    <div class="sobre-conteudo">
+
+      <div class="sobre-imagem">
+        <img src="sobre-tenis.png" alt="Tênis de corrida em uso" loading="lazy">
+      </div>
+
+      <div class="sobre-lista">
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-stopwatch"></i></div>
+          <div>
+            <strong>GCT</strong>
+            <p>O GCT (ou "Ground Contact Time" em inglês) é o tempo em que um corredor tem o pé em contato com o solo a cada passada, medido em milissegundos.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-bolt"></i></div>
+          <div>
+            <strong>Power</strong>
+            <p>Potência de corrida (em Watts) mede o esforço que você coloca na corrida, indicando a força e velocidade aplicadas a cada momento.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-hand-fist"></i></div>
+          <div>
+            <strong>Impacto</strong>
+            <p>Refere-se à força que o corpo do corredor sofre a cada passada, sendo um fator crucial na prevenção de lesões e na melhoria do desempenho.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-shoe-prints"></i></div>
+          <div>
+            <strong>Pronação</strong>
+            <p>A pronação é o movimento natural em que o pé roda para dentro ao tocar o solo, distribuindo o impacto e o peso corporal.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-gauge-high"></i></div>
+          <div>
+            <strong>Velocidade de pronação</strong>
+            <p>A velocidade de pronação refere-se à rapidez com que o pé gira para dentro durante a marcha ou corrida, um movimento natural que amortecer o impacto com o solo.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-arrows-left-right"></i></div>
+          <div>
+            <strong>Xpro</strong>
+            <p>O Xpro é um indicador que combina a amplitude da pronação do pé com a velocidade desse movimento durante a corrida.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-lungs"></i></div>
+          <div>
+            <strong>VO₂</strong>
+            <p>O VO₂ representa a quantidade máxima de oxigênio que o corpo consegue utilizar durante esforços intensos.</p>
+          </div>
+        </div>
+        <div class="criterio-item">
+          <div class="criterio-icone"><i class="fas fa-shoe-prints"></i></div>
+          <div>
+            <strong>MP-TO</strong>
+            <p>O MP-TO indica o ponto de contato do médio pé com o solo durante a corrida.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" width="60">
+      <div>
+        <h2>TÊNIS COM <span class="destaque1">ESTATÍSTICA</span></h2>
+        <p>DADOS QUE LEVAM VOCÊ MAIS LONGE</p>
+      </div>
+    </div>
+   <div class="social">
+  <a href="https://www.instagram.com/teniscomciencia/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@teniscomciencia" target="_blank" class="youtube">
+    <i class="fab fa-youtube"></i>
+  </a>
+  <a href="https://www.tiktok.com/@tenis_com_ciencia" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+  </footer>
+
+  <!-- Ficha do tênis (modal) -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-ficha">
+      <button type="button" id="btnFecharFicha" class="modal-fechar" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+
+      <div class="modal-imagem" id="fichaImagemWrap">
+        <img id="fichaImagem" alt="" style="display:none;">
+        <div class="modal-imagem-placeholder" id="fichaImagemPlaceholder">
+          <i class="fas fa-shoe-prints"></i>
+          <span>Sem imagem cadastrada</span>
+        </div>
+      </div>
+
+      <div class="modal-corpo">
+        <div class="modal-cabecalho">
+          <div class="modal-cabecalho-icone"><i class="fas fa-shoe-prints"></i></div>
+          <div>
+            <h3 id="fichaNome">Nome do tênis</h3>
+            <span id="fichaNota" class="modal-nota-badge">Nota -</span>
+          </div>
+        </div>
+
+        <div class="modal-precos">
+          <div class="modal-precos-item">
+            <span>Preço</span>
+            <strong id="fichaPreco">-</strong>
+          </div>
+          <div class="modal-precos-item">
+            <span>Preço Ideal</span>
+            <strong id="fichaPrecoIdeal">-</strong>
+          </div>
+          <div class="modal-precos-item">
+            <span>Custo-benefício</span>
+            <strong id="fichaCB">-</strong>
+          </div>
+          <div class="modal-precos-item">
+            <span>Peso</span>
+            <strong id="fichaPeso">-</strong>
+          </div>
+        </div>
+
+        <h4 class="modal-subtitulo">Critérios</h4>
+        <div class="modal-criterios" id="fichaCriterios"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
