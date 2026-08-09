@@ -19,6 +19,19 @@ const precoSelect = document.getElementById("precoSelect");
 const btnToggleFiltros = document.getElementById("btnToggleFiltros");
 const modalOverlay = document.getElementById("modalOverlay");
 const btnFecharFicha = document.getElementById("btnFecharFicha");
+const avisoDev = document.getElementById("avisoDev");
+const btnFecharAvisoDev = document.getElementById("btnFecharAvisoDev");
+
+// Aviso "em desenvolvimento": fecha e não mostra de novo nesse navegador
+if (avisoDev && btnFecharAvisoDev) {
+  if (localStorage.getItem("avisoDevFechado") === "1") {
+    avisoDev.classList.add("escondido");
+  }
+  btnFecharAvisoDev.addEventListener("click", () => {
+    avisoDev.classList.add("escondido");
+    localStorage.setItem("avisoDevFechado", "1");
+  });
+}
 
 // Cabeçalho "Classificar Tênis" clicável: leva o foco até o primeiro filtro
 if (btnToggleFiltros && tipoCorridaSelect) {
