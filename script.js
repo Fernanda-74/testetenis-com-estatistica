@@ -33,6 +33,19 @@ if (avisoDev && btnFecharAvisoDev) {
   });
 }
 
+// Aviso "ative o modo desktop" (só aparece em telas de celular via CSS): fecha e lembra
+const avisoDesktop = document.getElementById("avisoDesktop");
+const btnFecharAvisoDesktop = document.getElementById("btnFecharAvisoDesktop");
+if (avisoDesktop && btnFecharAvisoDesktop) {
+  if (localStorage.getItem("avisoDesktopFechado") === "1") {
+    avisoDesktop.classList.add("escondido");
+  }
+  btnFecharAvisoDesktop.addEventListener("click", () => {
+    avisoDesktop.classList.add("escondido");
+    localStorage.setItem("avisoDesktopFechado", "1");
+  });
+}
+
 // Cabeçalho "Classificar Tênis" clicável: leva o foco até o primeiro filtro
 if (btnToggleFiltros && tipoCorridaSelect) {
   btnToggleFiltros.addEventListener("click", () => {

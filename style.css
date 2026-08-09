@@ -1383,3 +1383,32 @@ body {
     max-width: none;
   }
 }
+
+/* Aviso "ative o modo desktop" — só aparece em telas de celular */
+.aviso-desktop {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 900;
+  align-items: flex-start;
+  gap: 12px;
+  background: #211D38;
+  border: 1.5px solid rgba(255, 83, 63, 0.5);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 30px rgba(33, 29, 56, 0.35);
+  animation: aviso-dev-entrar 0.4s ease;
+}
+
+.aviso-desktop .aviso-dev-icone {
+  background: rgba(255, 83, 63, 0.15);
+  color: #FF533F;
+}
+
+@media (max-width: 768px) {
+  .aviso-desktop:not(.escondido) {
+    display: flex;
+  }
+}
