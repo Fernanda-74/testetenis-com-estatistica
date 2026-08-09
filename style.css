@@ -521,6 +521,7 @@ body {
 .grafico-canvas-wrap {
   flex: 1;
   min-width: 0;
+  height: 480px;
   position: relative;
 }
 
@@ -720,6 +721,7 @@ body {
 
   .grafico-canvas-wrap {
     width: 100%;
+    height: 440px;
   }
 
   .nota {
@@ -788,6 +790,10 @@ body {
   .grafico {
     width: 100%;
     margin-top: 20px;
+  }
+
+  .grafico-canvas-wrap {
+    height: 380px;
   }
 
   .nota {

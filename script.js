@@ -372,6 +372,7 @@ function renderClassificacao(indices) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
         r: {
           min: 0,
@@ -532,6 +533,7 @@ function updateChart() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
         r: {
           min: 0,
