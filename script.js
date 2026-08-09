@@ -66,8 +66,6 @@ const CRITERIOS_FICHA = [
   { valor: "GCT", nota: "GCT NOTA", label: "GCT", icone: "fa-stopwatch", unidade: "ms" },
   { valor: "POWER", nota: "Power NOTA", label: "Retorno de Energia", icone: "fa-bolt", unidade: "W" },
   { valor: "IMPACTO", nota: "Impacto NOTA", label: "Amortecimento", icone: "fa-hand-fist", unidade: "" },
-  { valor: "PRONAÇÃO", nota: "Pronacao NOTA", label: "Pronação", icone: "fa-shoe-prints", unidade: "" },
-  { valor: "VEL. PRON.", nota: "Vel. Pronacao NOTA", label: "Vel. Pronação", icone: "fa-gauge-high", unidade: "" },
   { valor: "Xpro", nota: "Xpro NOTA", label: "Estabilidade", icone: "fa-arrows-left-right", unidade: "" },
   { valor: "VO2", nota: "VO2 NOTA", label: "VO₂", icone: "fa-lungs", unidade: "" },
   { valor: "MP - TO", nota: "MP - TO NOTA", label: "MP-TO", icone: "fa-shoe-prints", unidade: "" }
@@ -380,7 +378,11 @@ function renderClassificacao(indices) {
           max: 10,
           ticks: {
             stepSize: 1,
-            font: { family: "'League Spartan', sans-serif", weight: "400", size: 11 }
+            color: "#211D38",
+            font: { family: "'League Spartan', sans-serif", weight: "800", size: 13 },
+            showLabelBackdrop: true,
+            backdropColor: "rgba(255, 255, 255, 0.85)",
+            backdropPadding: 3
           },
           pointLabels: {
             font: { family: "'League Spartan', sans-serif", weight: "600", size: 12 }
@@ -536,7 +538,11 @@ function updateChart() {
           max: 10,
           ticks: {
             stepSize: 1,
-            font: { family: "'League Spartan', sans-serif", weight: "400", size: 11 }
+            color: "#211D38",
+            font: { family: "'League Spartan', sans-serif", weight: "800", size: 13 },
+            showLabelBackdrop: true,
+            backdropColor: "rgba(255, 255, 255, 0.85)",
+            backdropPadding: 3
           },
           pointLabels: {
             font: { family: "'League Spartan', sans-serif", weight: "600", size: 12 }
