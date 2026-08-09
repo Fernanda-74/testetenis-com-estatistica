@@ -51,8 +51,8 @@ document.addEventListener("keydown", (e) => {
 // Colunas usadas na ficha detalhada de cada tênis
 const CRITERIOS_FICHA = [
   { valor: "GCT", nota: "GCT NOTA", label: "GCT", icone: "fa-stopwatch", unidade: "ms" },
-  { valor: "POWER", nota: "Power NOTA", label: "Power", icone: "fa-bolt", unidade: "W" },
-  { valor: "IMPACTO", nota: "Impacto NOTA", label: "Impacto", icone: "fa-hand-fist", unidade: "" },
+  { valor: "POWER", nota: "Power NOTA", label: "Retorno de Energia", icone: "fa-bolt", unidade: "W" },
+  { valor: "IMPACTO", nota: "Impacto NOTA", label: "Amortecimento", icone: "fa-hand-fist", unidade: "" },
   { valor: "PRONAÇÃO", nota: "Pronacao NOTA", label: "Pronação", icone: "fa-shoe-prints", unidade: "" },
   { valor: "VEL. PRON.", nota: "Vel. Pronacao NOTA", label: "Vel. Pronação", icone: "fa-gauge-high", unidade: "" },
   { valor: "Xpro", nota: "Xpro NOTA", label: "Xpro", icone: "fa-arrows-left-right", unidade: "" },
@@ -73,6 +73,7 @@ function abrirFichaTenis(idx) {
   document.getElementById("fichaPrecoIdeal").textContent = `R$${row["Preco IDEAL"] || row["PRECO IDEAL"] || "-"}`;
   document.getElementById("fichaCB").textContent = row["C x B"] || row["C X B"] || "-";
   document.getElementById("fichaPeso").textContent = row["PESO"] ? `${row["PESO"]} g` : "-";
+  document.getElementById("fichaAgua").textContent = (row["H2O"] !== undefined && row["H2O"] !== "") ? row["H2O"] : "-";
 
   // Imagem do tênis (se a planilha tiver uma coluna com o link); senão, mostra o placeholder
   const fichaImagem = document.getElementById("fichaImagem");
